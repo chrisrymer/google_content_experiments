@@ -45,11 +45,6 @@ define(["dojo/_base/declare","./analytics/Omniture"], function(declare, Omniture
                     experiment: expID
                 },
                 load:function(){
-                    var tracking;
-
-                    if(Omniture) {
-                        tracking = new Omniture();
-                    }
 
                     if(!variation) {
                         cxApi.chooseVariation();
@@ -68,10 +63,6 @@ define(["dojo/_base/declare","./analytics/Omniture"], function(declare, Omniture
                     variationFN(variation);
 
                     ga("send", "event", "experiment", label);
-
-                    if(tracking != undefined) {
-                        tracking.addEventTracking(null, label + ":" + variation);
-                    }
 
                 },
                 error: function(err) {
