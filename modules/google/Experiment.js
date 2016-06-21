@@ -1,5 +1,5 @@
 // asset/js/lib/modules
-define(["dojo/_base/declare","./analytics/Omniture"], function(declare, Omniture){
+define(["dojo/_base/declare","dojo/io/script"], function(declare, script){
     return declare(null, {
         version: "0.0.1",
         constructor: function(expID, label, variationFN, override) {
@@ -39,7 +39,7 @@ define(["dojo/_base/declare","./analytics/Omniture"], function(declare, Omniture
             // Fail is experiment is not set and override is not applied
             if(expID == null && variation == null) return false;
 
-            dojo.io.script.get({
+            script.get({
                 url:"//www.google-analytics.com/cx/api.js",
                 content: {
                     experiment: expID
